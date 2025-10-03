@@ -216,7 +216,7 @@ export function Layout({ children, pageOpts }: NextraThemeLayoutProps) {
                         src={authorSocials.avatar}
                         width={20}
                       />
-                      {frontMatter.author}
+                      {authorSocials.nick || frontMatter.author}
                     </a>
                   )}
                   {frontMatter.author && frontMatter.date && (

@@ -38,15 +38,16 @@ export function LandingHero() {
 
   return (
     <div>
-      <h1 className="font-brand text-brand max-w-2xl text-6xl font-medium sm:text-7xl lg:max-w-3xl lg:text-8xl">
-        Build the 2D and 3D web without coding.
+      <h1 className="font-brand text-brand max-w-2xl text-6xl font-medium sm:text-7xl lg:max-w-2xl lg:text-8xl">
+        Build the 2D and 3D web
       </h1>
-      <div className="h-8" />
+      <div className="h-4" />
       <Link
-        className="text-subtle hover:text-default pl-0.5 font-mono text-base font-medium lg:text-lg"
+        className="text-subtle hover:text-default group pl-0.5 font-mono text-base lg:text-lg"
         href={latestBlog.route}
       >
-        Latest Blog: <span className="underline">{latestBlog.meta?.title}</span>
+        Latest:{" "}
+        <span className="group-hover:underline">{latestBlog.meta?.title}</span>
       </Link>
       <div className="relative mt-20 md:mt-28">
         <div className="bg-neutral group relative -mx-8 h-60 overflow-hidden md:mx-0 md:h-80 md:rounded-[62px] lg:h-96">

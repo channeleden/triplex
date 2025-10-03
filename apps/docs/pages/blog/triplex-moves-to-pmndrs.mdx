@@ -1,7 +1,7 @@
 ---
 author: Michael Dougall
-title: Triplex Moves To Poimandres
-date: 2025-09-30
+title: Triplex Goes Open Source and Moves to Poimandres
+date: 2025-10-03
 description: Triplex has moved into the Poimandres Collective and is now completely open source!
 image: /logos/pmndrs.svg
 ---
@@ -16,17 +16,36 @@ Triplex started out as an experiment late 2022 when I was building games with Re
 
 So the experiment [ended with a proof-of-concept editor](https://x.com/dougesdev/status/1597178413449904129) where you could transform components in 3d space and save them back to code. It felt like a real game changer. From there I was hooked, and I started building out the core features in my spare time before and after work that would eventually become Triplex.
 
-Here's a short timeline of the major releases and refactors in Triplex:
+Here's a timeline of the major changes in Triplex:
 
-- **Jun 2023**: [Released Triplex Standalone](https://x.com/dougesdev/status/1664874971481382913)
-- **Sep 2023**: Editing child elements through the element panel
+- **Jun 2023**: [Released Triplex Standalone](https://x.com/dougesdev/status/1664874971481382913), edit your components visually and save back to code
+- **Sep 2023**: Editing child elements through the elements panel
 - **Oct 2023**: Internal re-write to prevent losing unsaved changes when refreshing, switching tabs, etc
 - **Mar 2024**: Selection system re-write to stop modifying the Three.js scene
-- **May 2024**: Removed the need for a Triplex config when getting started
-- **Jan 2025**: Added support for React HTML elements and Canvas components
-- **Mar 2025**: [Released Triplex for VS Code](https://x.com/trytriplex/status/1904135005670113636)
-- **Sep 2025**: Triplex moves to Poimandres
+- **May 2024**: Removed the entire config being required to get started, install and open a component! That's it!
+- **Jan 2025**: Added support for React DOM elements and components, unblocking using Triplex for 2D and composed 2D/3D components
+- **Mar 2025**: [Released Triplex for VS Code](https://x.com/trytriplex/status/1904135005670113636), edit your components visually right inside VS Code
+- **Aug 2025**: Update the selection system to use AST paths for identification instead of line and column number
+- **Oct 2025**: Triplex goes open source and moves to Poimandres
 
-I made so many architectural mistakes. But you can only know you made them if you have people using your stuff and run into issues, so for that I'm grateful!
+3 years, 1,200 commits, and 1 baby later and now we're here. I've always had intentions to build a company around Triplex, "build it and they'll come", but unfortunately never found product market fit. I've now [started a new job](https://x.com/dougesdev/status/1968239358210908267) at [Paper](https://paper.design) as founding product engineer and because of that have less time to dedicate to Triplex.
+
+I want to see Triplex thrive and grow, and building completely in the open under Poimandres is the best place for that to happen. It's more like going home after all this time because that's where it started out from, after all.
 
 ## Where To From Here
+
+This is a call to action for you dear reader. Where we go is going to be up to you, the community! What features do you want to see? What bugs need fixing? What should the roadmap look like? All of that is open for discussion and contribution, I'd absolutely love to see pull requests raised against Triplex and new features land from the community.
+
+Here's some ideas of what we could do next:
+
+- Plugins and deeper integrations with pmndrs libraries (XR, Koota, Drei)
+- Support non-React frameworks (Vue, Svelte, ...?)
+- Lean into more AI features (I [wrote a MVP for this](https://github.com/pmndrs/triplex/blob/main/apps/cloud/src/app/api/ai/route.ts#L21) but it's terrible and behind a feature gate)
+- Build a Cloud app (imagine working at app.triplex.dev)
+- New productivity features, make it easier for non-coders to jump in, shareable deployments
+- Support other React libraries ([Play Canvas React](https://github.com/playcanvas/react?)
+- React Server Components / Next.js support
+
+There's so much opportunity here beyond just React and React Three Fiber, and I hope to see what that looks like with you for the years to come. Until next time.
+
+mike douges
