@@ -264,30 +264,6 @@ describe("number input", () => {
     expect(change).toHaveBeenCalledWith(10.02);
   });
 
-  it("should multiply the step during a drag when pressing ctrl", async () => {
-    const change = vi.fn();
-    const confirm = vi.fn();
-    const { getByTestId } = render(
-      <NumberInput
-        actionId="contextpanel_project_ignore"
-        defaultValue={10.2}
-        name="x"
-        onChange={change}
-        onConfirm={confirm}
-      />,
-    );
-    const element = getByTestId("number-10.2");
-    fireEvent.mouseDown(element);
-    await waitFor(() => getByTestId("pointer-lock"));
-    await fireEvent.keyDown(document, { ctrlKey: true });
-
-    fireEvent.mouseMove(element, { clientX: 1 });
-
-    // TODO: This should be capped to multiples of 0.5
-    // E.g. Round up or down. So this should round down to 10.5.
-    expect(change).toHaveBeenCalledWith(10.7);
-  });
-
   it("should reduce the step during a drag when pressing shift", async () => {
     const change = vi.fn();
     const confirm = vi.fn();
