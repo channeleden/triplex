@@ -40,7 +40,7 @@
     "prepack": "node ../../scripts/workspace-run.js ./apply-publish-config.js",
     "pack": "node scripts/pack.js",
     "publish-vsce": "cd out && vsce publish --no-dependencies --skip-duplicate",
-    "publish-vsx": "cd out && npx ovsx publish --no-dependencies --skip-duplicate -p $OPENVSX_TOKEN",
+    "publish-vsx": "cd out && npx ovsx publish --pat $OPENVSX_TOKEN --no-dependencies --skip-duplicate",
     "typedef": "tsc -p ./tsconfig.json"
   },
   "contributes": {
