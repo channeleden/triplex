@@ -67,14 +67,21 @@ jobs:
         run: pnpm --filter triplex-vsce run pack
         if: steps.check.outcome == 'success'
 
+      - name: Read vsix
+        id: vsix_version
+        working-directory: apps/vscode/out
+        run: echo "VSIX_PATH=$(find . -name "*.vsix" -print -quit)" >> $GITHUB_ENV
+
       - name: Release to code marketplace
-        run: pnpm --filter triplex-vsce run publish-vsce
+        working-directory: apps/vscode/out
+        run: vsce publish --no-dependencies --skip-duplicate
         if: steps.check.outcome == 'success'
         env:
           VSCE_PAT: ${{ secrets.VSCE_PAT }}
 
       - name: Release to open vsx registry
-        run: pnpm --filter triplex-vsce run publish-vsx
+        working-directory: apps/vscode/out
+        run: npx ovsx publish $VSIX_PATH --pat $OPENVSX_TOKEN --no-dependencies --skip-duplicate
         if: steps.check.outcome == 'success'
         env:
           VSCE_PAT: ${{ secrets.VSCE_PAT }}
