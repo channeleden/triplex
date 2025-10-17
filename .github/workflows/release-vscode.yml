@@ -67,8 +67,14 @@ jobs:
         run: pnpm --filter triplex-vsce run pack
         if: steps.check.outcome == 'success'
 
-      - name: Release targets
-        run: pnpm --filter triplex-vsce run publish
+      - name: Release to code marketplace
+        run: pnpm --filter triplex-vsce run publish-vsce
+        if: steps.check.outcome == 'success'
+        env:
+          VSCE_PAT: ${{ secrets.VSCE_PAT }}
+
+      - name: Release to open vsx registry
+        run: pnpm --filter triplex-vsce run publish-vsx
         if: steps.check.outcome == 'success'
         env:
           VSCE_PAT: ${{ secrets.VSCE_PAT }}
