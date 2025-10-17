@@ -74,7 +74,7 @@ jobs:
 
       - name: Release to code marketplace
         working-directory: apps/vscode/out
-        run: vsce publish --no-dependencies --skip-duplicate
+        run: npx vsce publish --no-dependencies --skip-duplicate
         if: steps.check.outcome == 'success'
         env:
           VSCE_PAT: ${{ secrets.VSCE_PAT }}
