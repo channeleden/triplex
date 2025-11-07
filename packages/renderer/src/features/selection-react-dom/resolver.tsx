@@ -38,7 +38,7 @@ export interface ResolvedNode {
  */
 function hasAncestorWithMeta(
   node: Node,
-  targetMeta: { path: string; column: number; line: number },
+  targetMeta: { column: number; line: number, path: string; },
 ): boolean {
   let current = node.parentElement;
   let foundAnyTriplexAncestor = false;
