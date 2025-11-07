@@ -678,11 +678,7 @@ describe("type infer", () => {
     `);
   });
 
-  // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-  // TODO: How do we get access to the concrete AST of a component declared using
-  // React.FC? It's currently unknown so this test isn't showing the correct data
-  // it's missing default props!
-  it.only("should infer default props from a jsx element React.FC decl", () => {
+  it("should infer default props from a jsx element React.FC decl", () => {
     const project = _createProject({
       tsConfigFilePath: join(__dirname, "__mocks__/tsconfig.json"),
     });
@@ -696,7 +692,12 @@ describe("type infer", () => {
     expect(props).toMatchInlineSnapshot(`
       [
         {
+          "defaultValue": {
+            "kind": "number",
+            "value": 700,
+          },
           "description": undefined,
+          "group": "Other",
           "kind": "number",
           "name": "scaleMax",
           "required": false,
@@ -708,6 +709,7 @@ describe("type infer", () => {
         {
           "column": 13,
           "description": undefined,
+          "group": "Other",
           "kind": "string",
           "line": 102,
           "name": "seed",
@@ -717,7 +719,12 @@ describe("type infer", () => {
           "valueKind": "string",
         },
         {
+          "defaultValue": {
+            "kind": "string",
+            "value": "WGAN",
+          },
           "description": undefined,
+          "group": "Other",
           "kind": "string",
           "literal": "foo",
           "name": "strategy",
@@ -725,14 +732,24 @@ describe("type infer", () => {
           "tags": {},
         },
         {
+          "defaultValue": {
+            "kind": "boolean",
+            "value": true,
+          },
           "description": undefined,
+          "group": "Other",
           "kind": "boolean",
           "name": "useInterpolation",
           "required": false,
           "tags": {},
         },
         {
+          "defaultValue": {
+            "kind": "boolean",
+            "value": true,
+          },
           "description": undefined,
+          "group": "Other",
           "kind": "boolean",
           "name": "useNoise",
           "required": false,

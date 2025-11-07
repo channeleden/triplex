@@ -281,12 +281,19 @@ function getJsxDeclProps(
       return null;
     }
 
-    const symbol = jsxType.getSymbol() || jsxType.getAliasSymbol();
-    if (!symbol) {
+    // For React.FC components, we want the actual component's declaration (e.g., const Home: React.FC = ...)
+    // rather than the FunctionComponent interface declaration
+    const componentSymbol = tagName.getSymbol();
+    const typeSymbol = jsxType.getSymbol() || jsxType.getAliasSymbol();
+    
+    if (!typeSymbol) {
       throw new Error("invariant: could not find symbol");
     }
 
-    const declaration = symbol.getDeclarations()[0];
+    // Use the component's symbol if available (for React.FC), otherwise use the type symbol
+    const declaration = componentSymbol
+      ? componentSymbol.getDeclarations()[0]
+      : typeSymbol.getDeclarations()[0];
 
     const propsType = element
       .getProject()
