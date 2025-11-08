@@ -62,6 +62,12 @@ export function _createProject({
       // We set this as an override but import the types from the options to ensure that we don't remove any
       // user defined types.
       types: (options?.types || []).concat(["@react-three/fiber", "react"]),
+      // Skip type checking of declaration files to reduce recursive imports and prevent
+      // maximum call stack errors when TypeScript walks complex node_modules structures.
+      skipLibCheck: true,
+      // Limit the depth TypeScript searches through node_modules to prevent stack overflow
+      // errors caused by deeply nested or circular package.json references.
+      maxNodeModuleJsDepth: 0,
     },
     defaultCompilerOptions: {
       // This is needed to keep JavaScript based projects working.
@@ -291,33 +297,7 @@ export function ${componentName}() {
         ];
         let undoStackPointer = sourceFileHistoryPointer.get(sourceFile) || 0;
 
-        let result: TResult extends SourceFile ? never : TResult;
-
-        try {
-          result = await callback(sourceFile);
-        } catch (error) {
-          // Handle errors from ts-morph gracefully. These can occur when TypeScript
-          // encounters issues like circular imports or maximum call stack errors during
-          // import resolution. We log the error and return an error status to allow
-          // Triplex to continue working instead of crashing.
-          const err = error as Error;
-          // eslint-disable-next-line no-console
-          console.error(
-            "Error during source file manipulation:",
-            err.message,
-          );
-
-          // Reset the source file to its original state to maintain consistency
-          sourceFile.replaceWithText(currentFullText);
-
-          return [
-            {
-              error: err.message,
-              status: "error",
-            },
-            undefined as TResult extends SourceFile ? never : TResult,
-          ];
-        }
+        const result = await callback(sourceFile);
 
         const nextFullText = sourceFile.getFullText();
 
