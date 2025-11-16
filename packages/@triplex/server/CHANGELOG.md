@@ -1,5 +1,12 @@
 # @triplex/server
 
+## 0.71.24
+
+### Patch Changes
+
+- fbd4c8a: Fixed React.FC components not displaying their default prop values in the editor UI. Components declared with `React.FC` will now correctly show default values when the element is active in the editor.
+- d9adc31: Prevent maximum call stack exceeded errors by limiting TypeScript import resolution depth. Added `skipLibCheck` and `maxNodeModuleJsDepth` compiler options to prevent infinite loops when resolving complex import graphs.
+
 ## 0.71.23
 
 ### Patch Changes

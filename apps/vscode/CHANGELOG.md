@@ -1,5 +1,13 @@
 # @triplex/vscode
 
+## 0.2.56
+
+### Patch Changes
+
+- Updated dependencies [fbd4c8a]
+- Updated dependencies [d9adc31]
+  - @triplex/server@0.71.24
+
 ## 0.2.55
 
 ### Patch Changes
