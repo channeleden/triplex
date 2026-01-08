@@ -1,0 +1,83 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-background text-rose-peach antialiased selection:bg-rose-red/30 selection:text-white;
+    font-family: 'Inter', sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-serif;
+  }
+}
+
+@layer components {
+  .glass {
+    @apply bg-background/50 backdrop-blur-xl border border-white/10;
+  }
+  
+  .glass-rose {
+    @apply bg-rose-magenta/10 backdrop-blur-xl border border-rose-red/25 shadow-[0_0_25px_rgba(255,0,68,0.15)];
+  }
+
+  .glow-rose {
+    box-shadow: 0 0 20px rgba(255, 0, 68, 0.3), 0 0 40px rgba(170, 0, 102, 0.15);
+  }
+
+  .glow-cyan {
+    box-shadow: 0 0 15px rgba(136, 255, 255, 0.2);
+  }
+
+  .grain-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.04;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(170, 0, 102, 0.5);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #ff0044;
+}
+
+/* Leva Overrides */
+#leva__root {
+  --leva-colors-elevation1: rgba(15, 0, 8, 0.9) !important;
+  --leva-colors-elevation2: rgba(20, 0, 10, 0.95) !important;
+  --leva-colors-elevation3: rgba(255, 0, 68, 0.1) !important;
+  --leva-colors-accent1: #ff0044 !important;
+  --leva-colors-accent2: #aa0066 !important;
+  --leva-colors-accent3: #ffaa88 !important;
+  --leva-colors-highlight1: #ffaa88 !important;
+  --leva-colors-highlight2: #88ffff !important;
+  --leva-colors-highlight3: #ffffff !important;
+  --leva-fonts-mono: 'Inter', sans-serif !important;
+  --leva-fonts-sans: 'Inter', sans-serif !important;
+  font-family: 'Inter', sans-serif !important;
+  backdrop-filter: blur(12px) !important;
+  border-radius: 12px !important;
+  border: 1px solid rgba(255, 0, 68, 0.15) !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4) !important;
+}
+
